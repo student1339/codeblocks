@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void Hanoi(int n,char a,char b,char c);
+void Move(int n,char a,char b);
+
+int main ()
+{
+    int n;
+    char a='a',b='b',c='c';
+
+    printf("Input the number of disks:");
+    scanf("%d",&n);
+    Hanoi(n,a,b,c);
+
+    return 0;
+}
+
+void Hanoi(int n,char a,char b,char c)
+{
+    if(n==1)
+    {
+        Move(n,a,b);
+    }
+    else
+    {
+        Hanoi(n-1,a,c,b);
+        Move(n,a,b);
+        Hanoi(n-1,c,b,a);
+    }
+}
+
+void Move(int n,char a,char b)
+{
+    printf("把第%d个圆盘从%c柱子移到%c柱子上\n",n,a,b);
+}
