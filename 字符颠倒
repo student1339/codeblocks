@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+#define long 80
+
+int main ()
+{
+    int count=0;
+    char arra[long+1];
+    printf("input your string:\n");
+    //gets(arra);
+    scanf("%s",arra);
+
+    while(arra[count]!='\0')
+    {
+        count++;
+    }
+
+    for(int i=1;i<=count;i++)//i=1去除空字符'\0'的影响
+    {
+        //if(i==1)printf("\b");此处为覆盖掉空字符
+        printf("%c",arra[count-i]);
+    }
+
+    return 0;
+}
