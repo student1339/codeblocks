@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void Hanoi(int n,char a,char b,char c);
+void Move(int n,char a,char b);
+int count=0;
+
+int main ()
+{
+    int n;
+    char a='a',b='b',c='c';
+
+    printf("Please enter the number of discs:");
+    scanf("%d",&n);
+    Hanoi(n,a,b,c);
+    printf("\tTotal:%d\n",count);
+
+    return 0;
+}
+
+void Hanoi(int n,char a,char b,char c)
+{
+    if(n==1)
+    {
+
+        Move(n,a,b);
+    }
+    else
+    {
+        Hanoi(n-1,a,c,b);
+        Move(n,a,b);
+        Hanoi(n-1,c,b,a);
+    }
+}
+
+void Move(int n,char a,char b)      //全是在n==1才开始的
+{
+    count++;
+    printf("%2d-(%2d):%c==>%c\n" ,count,n,a,b);
+}
