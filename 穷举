@@ -1,0 +1,36 @@
+//药品的总数量有total克，total为整数类型，其数值由用户从键盘输入。
+//total数量的药品用天平来称量，砝码只有1g, 2g, 5g三种，
+//若要求加的砝码总数为30个，有几种不同的加法？
+//用穷举法编程求解，先输出各个方案，然后输出方案的总数。
+
+#include <stdio.h>
+
+#define weigh1 1
+#define weigh2 2
+#define weigh3 5
+
+int main ()
+{
+    int total;
+    int count=0;
+    scanf("%d",&total);
+
+    for(int i=0;i<=total/weigh1;i++)
+    {
+        for(int j=0;j<=total/weigh2;j++)
+        {
+                for(int k=0;k<=total/weigh3;k++)
+                {
+                    if((i*weigh1+j*weigh2+k*weigh3==total)&&(i+j+k==30))
+                    {
+                        printf("%2d,%2d,%2d\n",i,j,k);
+                        count++;
+                    }
+                }
+        }
+
+    }
+
+    printf("%d\n",count);
+    return 0;
+}
