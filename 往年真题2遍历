@@ -1,0 +1,53 @@
+/*
+计算机学部某实验室打算为实验室同学购买一批鼠标，
+经过市场了解后选定了三款某品牌鼠标：A 鼠标 500元一个，B 鼠标 300 元一个，C 鼠标 50元一个。
+现打算用 1 万块钱(全部花完)买 N 个鼠标，要求每款鼠标都要有，问有多少种方案。请编写一个程序，对于输入的 N，计算并输出有多少种方案满足要求。
+若没有符合要求的组合方式，则输出0。要求用函数计算并返回方案的组合数。
+*/
+
+#include <math.h>
+#include <stdio.h>
+
+#define mouse1  500
+#define mouse2  300
+#define mouse3  50
+#define money   10000
+
+int Approach(int);
+
+int main()
+{
+    int N,sum;
+    scanf("%d",&N);
+
+    while(N<0)
+    {
+        printf("Error!\n");
+        scanf("%d",&N);
+    }
+
+    sum=Approach(N);
+
+    printf("Number of plans: %d\n",sum);
+    return 0;
+}
+
+int Approach(int N)
+{
+    int count=0;
+    for(int i=1;i<money/mouse1;i++)
+    {
+        for(int j=1;j<money/mouse2;j++)
+        {
+            for(int k=1;k<money/mouse3;k++)
+            {
+                if((i*mouse1+j*mouse2+k*mouse3==money)&&(i+j+k==N))
+                {
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+}
+
