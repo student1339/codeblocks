@@ -1,0 +1,41 @@
+/*
+为了防控新冠疫情，某工厂开始加大口罩的生产。
+上一个月的口罩生产数量为 100，随着工厂员工陆续解除隔离，生产加快，
+每月可多生产 10% 的口罩（有小数直接舍弃）；
+计算扩大生产后的N 个月生产的口罩数量总和。
+要求用自定义函数计算并返回计算扩大生产后的N 个月生产的口罩数量总和。
+*/
+
+#include <math.h>
+#include <stdio.h>
+
+int manufa(int N);
+
+int main()
+{
+    int N,sum;
+    scanf("%d",&N);
+
+    while(N<0)
+    {
+        printf("Error!\n");
+        scanf("%d",&N);
+    }
+
+    sum=manufa(N);
+    printf("%d\n",sum);
+    return 0;
+}
+
+int manufa(int N)
+{
+    double evsum=100,sum=0;
+
+    for(int i=1;i<=N;i++)
+    {
+        evsum=evsum*1.1;
+        sum+=evsum;
+    }
+
+    return sum;
+}
