@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main()
+{
+    int count=0;
+    int n;
+    int m;
+    do
+    {
+        printf("Input:");
+        m = scanf("%d", &n);
+        while(getchar()!='\n');
+    }while (m != 1 || n<= 0); //判断读取数据是否正确
+
+    printf("初始值为%d，以下为计算过程：\n", n);
+
+    while (n != 1) //在运算结果不为1 时
+    {
+        count++;
+        if (n % 2 == 0) //偶数的规则
+        {
+            n = n / 2;
+            printf("第%d步，进行了除以2的操作，结果为：%10d\n", count, n);
+        }
+        else   //奇数的规则
+        {
+            n = n * 3 + 1;
+            printf("第%d步，进行了乘3加1的操作，结果为：%10d\n", count, n);
+        }
+    }
+    return 0;
+}
